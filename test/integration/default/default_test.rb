@@ -14,3 +14,20 @@ unless os.windows?
     it { should exist }
   end
 end
+
+describe directory('/opt') do
+  its('mode') { should cmp '0755' }
+end
+
+describe directory('/opt/bin') do
+  its('mode') { should cmp '0755' }
+end
+
+describe directory('/var/cache/chef') do
+  its('mode') { should cmp '0755' }
+end
+
+describe file('/opt/bin/go-audit-producer') do
+  its('mode') { should cmp '0755' }
+end
+
