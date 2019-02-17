@@ -4,6 +4,8 @@ property :systemd_unit, Hash, required: true
 property :bin, String, required: true
 property :env_vars_file, String
 property :config_file, String
+property :prefix_log, String
+property :log_file, String
 property :user, String, required: true
 property :group, String, required: true
 
@@ -14,12 +16,23 @@ action :create do
   # Configure systemd unit with options
   unit = new_resource.systemd_unit.to_hash
 
+  # Create log directory
+  directory new_resource.prefix_log do
+    path new_resource.prefix_log
+    mode 0755
+    recursive true
+    action :create
+  end
+
   # Create config file
   template new_resource.config_file do
     source 'go-audit.yaml.erb'
     owner new_resource.user
     group new_resource.group
     mode 0644
+    variables(
+      log_file: new_resource.log_file
+    )
   end
 
   # Build command stack

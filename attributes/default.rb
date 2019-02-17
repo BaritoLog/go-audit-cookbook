@@ -39,8 +39,10 @@ default[cookbook_name]['prefix_env_vars'] = '/etc/default'
 default[cookbook_name]['env_vars_file'] = "#{node[cookbook_name]['prefix_env_vars']}/#{node[cookbook_name]['service_name']}"
 default[cookbook_name]['env_vars'] = {}
 
-# config file
+# files locations
 default[cookbook_name]['config_file'] = '/etc/go-audit.yaml'
+default[cookbook_name]['prefix_log'] = '/var/log/go-audit'
+default[cookbook_name]['log_file'] = "#{node[cookbook_name]['prefix_log']}/go-audit.log"
 
 # go-audit daemon options, used to create the ExecStart option in service
 default[cookbook_name]['cli_opts'] = ["-config #{node[cookbook_name]['config_file']}"]

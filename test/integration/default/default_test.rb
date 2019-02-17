@@ -42,4 +42,11 @@ end
 describe systemd_service('go-audit') do
   it { should be_installed }
   it { should be_enabled }
+  it { should be_running }
+end
+
+describe file('/var/log/go-audit/go-audit.log') do
+  its('mode') { should cmp '0600' }
+end
+
 end

@@ -38,6 +38,8 @@ go_audit_binary_systemd service_name do
   bin bin
   env_vars_file env_vars_file
   config_file node[cookbook_name]['config_file']
+  prefix_log node[cookbook_name]['prefix_log']
+  log_file node[cookbook_name]['log_file']
   user node[cookbook_name]['user']
   group node[cookbook_name]['group']
 end
