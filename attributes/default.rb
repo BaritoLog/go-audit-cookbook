@@ -9,8 +9,8 @@
 cookbook_name = 'go-audit'
 
 # User and group of service process
-default[cookbook_name]['user'] = 'barito'
-default[cookbook_name]['group'] = 'barito'
+default[cookbook_name]['user'] = 'go-audit'
+default[cookbook_name]['group'] = 'go-audit'
 
 # Temp directory
 default[cookbook_name]['prefix_temp'] = '/var/cache/chef'

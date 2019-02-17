@@ -6,11 +6,11 @@
 # found at http://inspec.io/docs/reference/resources/
 
 unless os.windows?
-  describe group('barito') do
+  describe group('go-audit') do
     it { should exist }
   end
 
-  describe user('barito')  do
+  describe user('go-audit')  do
     it { should exist }
   end
 end
