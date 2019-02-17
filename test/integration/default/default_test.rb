@@ -15,6 +15,10 @@ unless os.windows?
   end
 end
 
+describe package('auditd') do
+  it { should be_installed }
+end
+
 describe directory('/opt') do
   its('mode') { should cmp '0755' }
 end

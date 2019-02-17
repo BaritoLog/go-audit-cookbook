@@ -12,6 +12,8 @@ go_audit_service_account node[cookbook_name]['user'] do
   group node[cookbook_name]['group']
 end
 
+package %w(auditd)
+
 go_audit_binary_install service_name do
   version node[cookbook_name]['version']
   prefix_root node[cookbook_name]['prefix_root']
