@@ -67,11 +67,11 @@ output:
     path: <%= @log_file %>
 
     # Octal file mode for the log file, make sure to always have a leading 0
-    mode: 0600
+    mode: 0660
 
     # User and group that should own the log file
-    user: root
-    group: root
+    user: syslog
+    group: adm
 
   # Writes logs to Graylog2 server using GELF standard: http://docs.graylog.org/en/stable/pages/gelf.html
   gelf:

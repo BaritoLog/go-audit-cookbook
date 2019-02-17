@@ -46,7 +46,7 @@ describe systemd_service('go-audit') do
 end
 
 describe file('/var/log/go-audit/go-audit.log') do
-  its('mode') { should cmp '0600' }
+  its('mode') { should cmp '0660' }
 end
 
 describe file('/etc/logrotate.d/go-audit') do
