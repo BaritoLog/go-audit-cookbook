@@ -33,6 +33,7 @@ action :create do
     variables(
       log_file: new_resource.log_file
     )
+    notifies :restart, "go_audit_binary_systemd[#{new_resource.name}]", :delayed
   end
 
   # Build command stack
