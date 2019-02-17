@@ -34,3 +34,8 @@ end
 describe file('/etc/default/go-audit') do
   its('mode') { should cmp '0600' }
 end
+
+describe systemd_service('go-audit') do
+  it { should be_installed }
+  it { should be_enabled }
+end

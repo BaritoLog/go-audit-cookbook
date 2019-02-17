@@ -38,3 +38,25 @@ default[cookbook_name]['service_name'] = 'go-audit'
 default[cookbook_name]['prefix_env_vars'] = '/etc/default'
 default[cookbook_name]['env_vars_file'] = "#{node[cookbook_name]['prefix_env_vars']}/#{node[cookbook_name]['service_name']}"
 default[cookbook_name]['env_vars'] = {}
+
+# config file
+default[cookbook_name]['config_file'] = '/etc/go-audit.yaml'
+
+# go-audit daemon options, used to create the ExecStart option in service
+default[cookbook_name]['cli_opts'] = ["-config #{node[cookbook_name]['config_file']}"]
+
+# go-audit Systemd service unit, include config
+default[cookbook_name]['systemd_unit'] = {
+  'Unit' => {
+    'Description' => 'go-audit',
+    'After' => 'network.target auditd.service',
+    'Conflicts' => 'auditd.service'
+  },
+  'Service' => {
+    'Type' => 'simple',
+    'ExecStart' => 'TO_BE_COMPLETED'
+  },
+  'Install' => {
+    'WantedBy' => 'multi-user.target'
+  }
+}

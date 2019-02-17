@@ -46,6 +46,6 @@ action :create do
     owner new_resource.user
     group new_resource.group
     mode 0755
-    notifies :restart, "barito_flow_binary_systemd[#{new_resource.name}]"
+    notifies :restart, "go_audit_binary_systemd[#{new_resource.name}]"
   end
 end
