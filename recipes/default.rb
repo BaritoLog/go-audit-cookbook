@@ -21,3 +21,10 @@ barito_flow_binary_install service_name do
   user node[cookbook_name]['user']
   group node[cookbook_name]['group']
 end
+
+env_vars_file = node[cookbook_name]['env_vars_file']
+barito_flow_env_vars_file env_vars_file do
+  env_vars node[cookbook_name]['env_vars']
+  user node[cookbook_name]['user']
+  group node[cookbook_name]['group']
+end

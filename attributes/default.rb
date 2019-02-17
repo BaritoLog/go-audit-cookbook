@@ -33,3 +33,8 @@ go_audit_binary = node[cookbook_name]['binary']
 default[cookbook_name]['mirror'] =
   "https://github.com/BaritoLog/go-audit/releases/download/#{go_audit_version}/#{go_audit_binary}"
 default[cookbook_name]['service_name'] = 'go-audit'
+
+# environment variables
+default[cookbook_name]['prefix_env_vars'] = '/etc/default'
+default[cookbook_name]['env_vars_file'] = "#{node[cookbook_name]['prefix_env_vars']}/#{node[cookbook_name]['service_name']}"
+default[cookbook_name]['env_vars'] = {}

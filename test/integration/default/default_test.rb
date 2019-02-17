@@ -27,7 +27,10 @@ describe directory('/var/cache/chef') do
   its('mode') { should cmp '0755' }
 end
 
-describe file('/opt/bin/go-audit-producer') do
+describe file('/opt/bin/go-audit') do
   its('mode') { should cmp '0755' }
 end
 
+describe file('/etc/default/go-audit') do
+  its('mode') { should cmp '0600' }
+end
