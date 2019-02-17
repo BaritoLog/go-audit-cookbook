@@ -43,3 +43,13 @@ go_audit_binary_systemd service_name do
   user node[cookbook_name]['user']
   group node[cookbook_name]['group']
 end
+
+template '/etc/logrotate.d/go-audit' do
+  source 'logrotate/go-audit.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+  variables(
+    log_file: node[cookbook_name]['log_file']
+  )
+end

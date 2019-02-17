@@ -49,4 +49,6 @@ describe file('/var/log/go-audit/go-audit.log') do
   its('mode') { should cmp '0600' }
 end
 
+describe file('/etc/logrotate.d/go-audit') do
+  its('mode') { should cmp '0644' }
 end

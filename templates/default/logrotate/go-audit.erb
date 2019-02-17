@@ -1,0 +1,12 @@
+<%= @log_directory %>/<%= @log_file %> {
+    compress
+    delaycompress
+    missingok
+    notifempty
+    daily
+    rotate 7
+    sharedscripts
+    postrotate
+        /usr/bin/killall -USR1 go-audit 2>/dev/null || true
+    endscript
+}
