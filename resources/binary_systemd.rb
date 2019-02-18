@@ -1,6 +1,6 @@
 property :name, String, name_property: true
 property :cli_opts, Array, default: []
-property :systemd_unit, Hash, required: true
+property :unit, Hash, required: true
 property :bin, String, required: true
 property :env_vars_file, String
 property :config_file, String
@@ -14,7 +14,7 @@ action :create do
   options = new_resource.cli_opts.join(' ')
 
   # Configure systemd unit with options
-  unit = new_resource.systemd_unit.to_hash
+  unit = new_resource.unit.to_hash
 
   # Create log directory
   directory new_resource.prefix_log do

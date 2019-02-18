@@ -9,7 +9,7 @@
 service_name = node[cookbook_name]['service_name']
 
 go_audit_service_account node[cookbook_name]['user'] do
-  group node[cookbook_name]['group']
+  service_group node[cookbook_name]['group']
 end
 
 package %w(auditd)
@@ -34,7 +34,7 @@ end
 bin = "#{node[cookbook_name]['prefix_bin']}/#{service_name}"
 go_audit_binary_systemd service_name do
   cli_opts node[cookbook_name]['cli_opts']
-  systemd_unit node[cookbook_name]['systemd_unit']
+  unit node[cookbook_name]['systemd_unit']
   bin bin
   env_vars_file env_vars_file
   config_file node[cookbook_name]['config_file']
